@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import shop from '@/api/shop'
 
 Vue.use(Vuex)
 
@@ -17,9 +18,23 @@ export default new Vuex.Store({
   },
 
   actions: {
-    fetchProducts() {
-      // make the call
-      // run setProducts mutation
+    fetchProducts({ commit }) {
+      return new Promise(resolve => {
+        // make the call
+        // call setProducts mutation
+        shop.getProducts(products => {
+          commit('setProducts', products)
+          resolve()
+        })
+      })
+    },
+
+    addToCart(context, product) {
+      if (product.inventory > 0) {
+        context.commit('pushProductToCart', product)
+      } else {
+        // show out of stock message
+      }
     }
   },
 
