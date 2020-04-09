@@ -3,7 +3,10 @@
     <h1>Product List</h1>
     <img v-if="loading" src="https://i.imgur.com/JfPpwOA.gif" alt="Loading" />
     <ul v-else>
-      <li v-for="product in products" :key="product.id">{{ product.title }}-{{ product.price }}</li>
+      <li v-for="product in products" :key="product.id">
+        {{ product.title }}-{{ product.price }}
+        <button @click="addProductToCart(product)">Add to cart</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -25,6 +28,12 @@ export default {
   created() {
     this.loading = true
     this.$store.dispatch('fetchProducts').then(() => (this.loading = false))
+  },
+
+  methods: {
+    addProductToCart(product) {
+      this.$store.dispatch('addProductToCart', product)
+    }
   }
 }
 </script>
