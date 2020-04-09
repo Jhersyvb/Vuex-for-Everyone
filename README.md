@@ -1,4 +1,8 @@
-# shopping-cart
+# Vuex for Everyone
+
+Course taken in https://vueschool.io/courses/vuex-for-everyone
+
+This Vue.js course is based on the official Vuex example. We'll create a shopping cart with Vue and progressively discover and learn about Vuex features by replacing pieces of the application with mutations, getters, and actions
 
 ## Project setup
 ```
