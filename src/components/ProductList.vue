@@ -11,14 +11,15 @@
 import shop from '@/api/shop'
 
 export default {
-  data() {
-    return {
-      products: []
+  computed: {
+    products() {
+      return this.$store.state.products
     }
   },
+
   created() {
     shop.getProducts(products => {
-      this.products = products
+      this.$store.commit('setProducts', products)
     })
   }
 }

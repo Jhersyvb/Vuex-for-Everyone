@@ -19,12 +19,14 @@ export default new Vuex.Store({
   actions: {
     fetchProducts() {
       // make the call
+      // run setProducts mutation
     }
   },
 
   mutations: {
-    setProducts() {
+    setProducts(state, products) {
       // update products
+      state.products = products
     }
   }
 })
