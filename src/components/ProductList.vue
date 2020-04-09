@@ -22,20 +22,12 @@ export default {
     }
   },
 
-  /* computed: mapState({
-    allProducts: state => state.products,
-    firstProduct: state => state.products[0],
-    specificProduct(state) {
-      return state.products[this.productIndex]
-    }
-  }), */
-
   computed: {
     ...mapState({
       products: state => state.products.items
     }),
 
-    ...mapGetters({
+    ...mapGetters('products', {
       productIsInStock: 'productIsInStock'
     })
   },
@@ -47,8 +39,8 @@ export default {
 
   methods: {
     ...mapActions({
-      fetchProducts: 'fetchProducts',
-      addProductToCart: 'addProductToCart'
+      fetchProducts: 'products/fetchProducts',
+      addProductToCart: 'cart/addProductToCart'
     })
   }
 }
